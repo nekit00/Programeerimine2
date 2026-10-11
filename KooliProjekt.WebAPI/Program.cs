@@ -41,6 +41,14 @@ namespace KooliProjekt.WebAPI
 
             var app = builder.Build();
 
+            // Uuendab andmebaasi automaatselt ja genereerib algandmed
+            using (var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                context.Database.Migrate();
+                SeedData.Generate(context);
+            }
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
