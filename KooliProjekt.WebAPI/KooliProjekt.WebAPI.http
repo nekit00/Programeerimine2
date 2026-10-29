@@ -1,6 +1,57 @@
 @KooliProjekt.WebAPI_HostAddress = http://localhost:5086
 
-GET {{KooliProjekt.WebAPI_HostAddress}}/weatherforecast/
+### ---------- Kategooriad ----------
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/Classes/List?page=1&pageSize=5
+Accept: application/json
+
+###
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/Classes/Get?id=1
+Accept: application/json
+
+### ---------- Tooted ----------
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/Products/List?page=1&pageSize=5
+Accept: application/json
+
+###
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/Products/List?page=1&pageSize=5&classId=1&name=Samsung
+Accept: application/json
+
+###
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/Products/Get?id=1
+Accept: application/json
+
+### ---------- Kliendid ----------
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/Customers/List?page=1&pageSize=5
+Accept: application/json
+
+###
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/Customers/Get?id=1
+Accept: application/json
+
+### ---------- Tellimused ----------
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/Orders/List?page=1&pageSize=5
+Accept: application/json
+
+###
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/Orders/Get?id=1
+Accept: application/json
+
+### ---------- Tellimuse read ----------
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/OrderLines/List?page=1&pageSize=5&orderId=1
+Accept: application/json
+
+###
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/OrderLines/Get?id=1
+Accept: application/json
+
+### ---------- Vigade kontroll ----------
+# Olematu id -> 404
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/Products/Get?id=99999
+Accept: application/json
+
+###
+# Vale lehekülg -> 400 koos propertyErrors
+GET {{KooliProjekt.WebAPI_HostAddress}}/api/Products/List?page=0&pageSize=5
 Accept: application/json
 
 ###
